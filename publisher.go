@@ -22,16 +22,16 @@ func Publisher() {
 	fmt.Printf("client.IsCOnnected() returned value: %v\n", client.IsConnected())
 
 	for {
-		if stop_count <= 10 {
-			text := "Hello MQTT " + strconv.FormatInt(rand.Int64N(1000), 10)
+		if stop_count >= 10 {
+			break
+		} else {
+			text := strconv.FormatInt(rand.Int64N(1000), 10)
 			fmt.Printf("Publicado: %s\n", text)
 			token := client.Publish("test/topic", 1, true, text)
 			// fmt.Printf("Publicado: %s\n", text)
 			token.Wait()
 			time.Sleep(100 * time.Millisecond)
 			stop_count++
-		} else {
-			break
 		}
 	}
 }
