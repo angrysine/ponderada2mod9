@@ -1,1 +1,0 @@
-# ponderada2mod9
